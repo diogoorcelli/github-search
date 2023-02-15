@@ -1,5 +1,3 @@
-import 'dart:math';
-
 import 'package:flutter_test/flutter_test.dart';
 import 'package:get_it/get_it.dart';
 import 'package:test_near/src/core/injections/app_injections.dart';
@@ -22,7 +20,7 @@ void main() {
   });
 
   test('test injection usecase', () {
-    injectionsInit();
+    AppInjections.injectionsInit();
 
     expect(getIt.isRegistered<SearchUserUsecase>(), true);
     expect(getIt.isRegistered<SearchUserDataSource>(), true);

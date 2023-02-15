@@ -8,23 +8,22 @@ import '../../features/data/repositories/search_user_repository_impl.dart';
 import '../../features/domain/repositories/search_user_repository.dart';
 import '../../features/domain/usecases/search_user_usecase.dart';
 import '../../features/domain/usecases/search_user_usecase_impl.dart';
-import '../navigator/navigator_service.dart';
 
-final GetIt getIt = GetIt.instance;
+class AppInjections {
+  static final getIt = GetIt.instance;
 
-Future<void> injectionsInit() async {
-  getIt.registerLazySingleton<SearchUserRepository>(
-    () => SearchUserRepositoryImpl(searchUserDataSource: getIt()),
-  );
-  getIt.registerLazySingleton<SearchUserUsecase>(
-    () => SearchUserUsecaseImpl(searchUserRepository: getIt()),
-  );
-  getIt.registerLazySingleton<NavigatorService>(() => NavigatorService());
-  getIt.registerLazySingleton<SearchUserCubit>(
-      () => SearchUserCubit(searchUserUseCase: getIt()));
-  getIt.registerSingleton<Dio>(Dio());
-  getIt.registerLazySingleton<SearchUserDataSource>(
-      () => SearchUserDatasourceImpl(dio: getIt()));
-  getIt.registerSingleton<SearchUserCubit>(
-      SearchUserCubit(searchUserUseCase: getIt()));
+  static Future<void> injectionsInit() async {
+    getIt.registerLazySingleton<SearchUserRepository>(
+      () => SearchUserRepositoryImpl(
+          searchUserDataSource: getIt<SearchUserDataSource>()),
+    );
+    getIt.registerLazySingleton<SearchUserUsecase>(() => SearchUserUsecaseImpl(
+        searchUserRepository: getIt<SearchUserRepository>()));
+    getIt.registerLazySingleton<Dio>(() => Dio());
+    getIt.registerLazySingleton<SearchUserDataSource>(
+        () => SearchUserDatasourceImpl(dio: getIt<Dio>()));
+
+    getIt.registerLazySingleton<SearchUserCubit>(
+        () => SearchUserCubit(searchUserUseCase: getIt<SearchUserUsecase>()));
+  }
 }

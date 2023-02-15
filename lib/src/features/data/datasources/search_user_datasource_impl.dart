@@ -13,9 +13,7 @@ class SearchUserDatasourceImpl implements SearchUserDataSource {
   @override
   Future<List<SearchUserModel>> call(String query) async {
     try {
-      //TODO: Desenvolver uma função para concatenar o baseUrl com o query
-      final response = await _dio.get(
-          '${EndpointsApi.baseUrlGithub + query.replaceAll('', '+')}&per_page=100');
+      final response = await _dio.get(EndpointsApi.baseUrlGithub + query);
 
       final result = response.data['items'] as List;
       return result.map((e) => SearchUserModel.fromMap(e)).toList();
