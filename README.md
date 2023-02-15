@@ -1,6 +1,6 @@
-Olá e bem-vindo(a) ao meu projeto em Flutter para busca de usuários através da API do GitHub!
+Olá e bem-vindo(a) ao meu projeto em Flutter!
 
-Este projeto foi desenvolvido com base em conceitos de programação, incluindo Clean Architecture, SOLID, Injeção de Dependência, Gerenciamento de estado, consumo de dados através de APIRest, testes Unitários e tratamento de falhas.
+Este projeto, para busca de usuários através da API do GitHub, foi desenvolvido com base em conceitos de programação, incluindo Clean Architecture, SOLID, Injeção de Dependência, Gerenciamento de estado, consumo de dados através de APIRest, testes Unitários e tratamento de falhas.
 
 O Clean Architecture é uma metodologia de desenvolvimento de software que visa separar as camadas de uma aplicação em módulos independentes, cada um com suas próprias responsabilidades e regras de negócio. Essa separação permite uma maior flexibilidade, escalabilidade e facilidade de manutenção do código.
 
